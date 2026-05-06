@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Médica | Atención de Excelencia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#1e40af',
+            'brand-light': '#3b5bdb',
+            'brand-dark': '#1a3580',
+          },
+          fontFamily: {
+            serif: ['Georgia', 'Cambria', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    .gradient-text {
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-bg {
+      background: linear-gradient(160deg, #ffffff 0%, #eff6ff 50%, #dbeafe 100%);
+    }
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(30, 64, 175, 0.12);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #1e40af, #2563eb);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #1a3580, #1e40af);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.35);
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-800 bg-white antialiased">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-brand flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+          </svg>
+        </div>
+        <span class="text-lg font-semibold text-brand tracking-tight">MédicaPro</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+        <a href="#tecnologia" class="hover:text-brand transition-colors">Tecnología IA</a>
+        <a href="#especialidades" class="hover:text-brand transition-colors">Especialidades</a>
+        <a href="#cita" class="btn-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold">
+          Agendar Cita
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
+      <div class="space-y-8">
+        <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-brand text-xs font-semibold px-4 py-2 rounded-full uppercase tracking-widest">
+          <span class="w-2 h-2 bg-brand rounded-full animate-pulse"></span>
+          Asistente IA disponible 24/7
+        </div>
+        <h1 class="text-5xl md:text-6xl font-light leading-tight text-gray-900">
+          Tu salud merece<br/>
+          <span class="gradient-text font-semibold">atención sin igual.</span>
+        </h1>
+        <p class="text-xl text-gray-500 leading-relaxed font-light max-w-md">
+          Combinamos la excelencia médica con inteligencia artificial para ofrecerte una experiencia de salud verdaderamente extraordinaria.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#cita" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            Agendar mi cita
+          </a>
+          <a href="#tecnologia" class="border border-gray-200 text-gray-700 px-8 py-4 rounded-full font-medium text-base hover:border-brand hover:text-brand transition-all inline-flex items-center justify-center">
+            Conocer más
+          </a>
+        </div>
+        <div class="flex items-center gap-8 pt-4">
+          <div class="text-center">
+            <p class="text-3xl font-bold text-brand">+15k</p>
+            <p class="text-xs text-gray-400 uppercase tracking-wide mt-1">Pacientes</p>
+          </div>
+          <div class="w-px h-10 bg-gray-200"></div>
+          <div class="text-center">
+            <p class="text-3xl font-bold text-brand">98%</p>
+            <p class="text-xs text-gray-400 uppercase tracking-wide mt-1">Satisfacción</p>
+          </div>
+          <div class="w-px h-10 bg-gray-200"></div>
+          <div class="text-center">
+            <p class="text-3xl font-bold text-brand">24/7</p>
+            <p class="text-xs text-gray-400 uppercase tracking-wide mt-1">Disponibilidad</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ilustración derecha -->
+      <div class="hidden md:flex justify-center">
+        <div class="relative">
+          <div class="w-80 h-80 rounded-3xl bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-100 flex items-center justify-center shadow-xl">
+            <div class="space-y-4 p-8 w-full">
+              <div class="flex items-center gap-3 bg-white rounded-2xl p-4 shadow-sm">
+                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-gray-700">Cita confirmada</p>
+                  <p class="text-xs text-gray-400">Mañana · 10:30 AM</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 bg-white rounded-2xl p-4 shadow-sm">
+                <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-gray-700">Asistente IA</p>
+                  <p class="text-xs text-gray-400">Respondiendo ahora</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 bg-white rounded-2xl p-4 shadow-sm">
+                <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-gray-700">Historial actualizado</p>
+                  <p class="text-xs text-gray-400">Acceso seguro 24/7</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -top-4 -right-4 w-16 h-16 rounded-2xl bg-brand flex items-center justify-center shadow-lg">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECNOLOGÍA IA -->
+  <section id="tecnologia" class="py-28 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 space-y-4">
+        <p class="text-brand text-sm font-semibold uppercase tracking-widest">Innovación médica</p>
+        <h2 class="text-4xl md:text-5xl font-light text-gray-900">
+          Nuestra <span class="gradient-text font-semibold">Tecnología IA</span>
+        </h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto font-light leading-relaxed">
+          Inteligencia artificial de última generación al servicio de tu bienestar. Disponible las 24 horas, los 7 días de la semana.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card-hover bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
+          <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Asistente Conversacional</h3>
+          <p class="text-gray-500 leading-relaxed font-light">
+            Nuestro asistente basado en Claude responde tus preguntas médicas generales con precisión y empatía, disponible en todo momento.
+          </p>
+        </div>
+
+        <div class="card-hover bg-brand rounded-3xl p-8 shadow-lg">
+          <div class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Voz del Doctor Digital</h3>
+          <p class="text-white/80 leading-relaxed font-light">
+            Las respuestas del asistente se sintetizan con la voz real del doctor mediante IA de clonación de voz, para una experiencia completamente personalizada.
+          </p>
+        </div>
+
+        <div class="card-hover bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
+          <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Agenda Inteligente</h3>
+          <p class="text-gray-500 leading-relaxed font-light">
+            El asistente recoge tus datos, elige el horario más conveniente y agenda tu cita automáticamente, sin esperas ni llamadas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADES -->
+  <section id="especialidades" class="py-28 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 space-y-4">
+        <p class="text-brand text-sm font-semibold uppercase tracking-widest">Áreas de expertise</p>
+        <h2 class="text-4xl md:text-5xl font-light text-gray-900">
+          Nuestras <span class="gradient-text font-semibold">Especialidades</span>
+        </h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto font-light">
+          Un equipo de especialistas de primer nivel, apoyados por tecnología de vanguardia.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="card-hover bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Cardiología</h3>
+          <p class="text-sm text-gray-400 font-light">Salud cardiovascular integral con diagnóstico avanzado</p>
+        </div>
+
+        <div class="card-hover bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Neurología</h3>
+          <p class="text-sm text-gray-400 font-light">Diagnóstico y tratamiento del sistema nervioso</p>
+        </div>
+
+        <div class="card-hover bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Medicina General</h3>
+          <p class="text-sm text-gray-400 font-light">Atención primaria de excelencia para toda la familia</p>
+        </div>
+
+        <div class="card-hover bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Oftalmología</h3>
+          <p class="text-sm text-gray-400 font-light">Cuidado visual con tecnología de precisión láser</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA AGENDAR CITA -->
+  <section id="cita" class="py-28 bg-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="bg-gradient-to-br from-brand to-blue-600 rounded-3xl p-16 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-24 -translate-x-24"></div>
+        <div class="relative z-10 space-y-6">
+          <p class="text-blue-200 text-sm font-semibold uppercase tracking-widest">Tu salud, nuestra prioridad</p>
+          <h2 class="text-4xl md:text-5xl font-light text-white leading-tight">
+            Agenda tu cita hoy.<br/>
+            <span class="font-semibold">Sin esperas. Sin complicaciones.</span>
+          </h2>
+          <p class="text-blue-100 text-lg font-light max-w-lg mx-auto">
+            Nuestro asistente IA está disponible ahora mismo para ayudarte. Haz clic y empieza en segundos.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <button
+              onclick="document.querySelector('#n8n-chat button')?.click()"
+              class="bg-white text-brand px-10 py-4 rounded-full font-semibold text-base hover:bg-blue-50 transition-all hover:shadow-lg inline-flex items-center justify-center gap-2"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              Agendar con el Asistente IA
+            </button>
+          </div>
+          <p class="text-blue-200/70 text-xs mt-4">
+            El asistente es una IA y no reemplaza la consulta médica presencial.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-50 border-t border-gray-100 py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-full bg-brand flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+          </svg>
+        </div>
+        <span class="font-medium text-gray-600">MédicaPro</span>
+      </div>
+      <p>© 2026 MédicaPro. Todos los derechos reservados.</p>
+      <p>Asistente IA — no reemplaza consulta médica.</p>
+    </div>
+  </footer>
+
+  <!-- WIDGET CHAT N8N -->
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+  <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+    createChat({
+      webhookUrl: 'https://autojdvc.app.n8n.cloud/webhook/asistente-medico-pro-trigger/chat',
+      webhookConfig: {
+        method: 'POST',
+        headers: {}
+      },
+      showWelcomeMessage: true,
+      title: 'Asistente Médico IA',
+      welcomeMessage: 'Hola, soy el asistente digital del Doctor. ¿En qué puedo ayudarle hoy?',
+      theme: {
+        buttonColor: '#1e40af',
+      }
+    });
+  </script>
+</body>
+</html>

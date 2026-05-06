@@ -1,0 +1,179 @@
+{
+  "name": "Asistente Médico Pro",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## 🏥 Asistente Médico Pro\n\n**Flujo completo:**\n1. **Chat Trigger** → Recibe mensajes del paciente vía web\n2. **Claude 3.5 Sonnet** → Modelo de lenguaje conectado al agente\n3. **AI Agent (Dr. Digital)** → Razona, agenda citas y responde dudas\n4. **Window Buffer Memory** → Recuerda el contexto de la conversación\n5. **HTTP Request (Voz)** → Envía la respuesta a ElevenLabs para síntesis de voz\n\n⚠️ **Antes de activar — pasos obligatorios:**\n- [ ] Añade tu credencial **Anthropic** en el nodo \"Claude 3.5 Sonnet\"\n- [ ] Reemplaza `YOUR_VOICE_ID` en el nodo HTTP Request con el ID de voz del doctor (ElevenLabs → Voices)\n- [ ] Reemplaza `YOUR_ELEVENLABS_API_KEY` con tu API Key de ElevenLabs\n- [ ] Personaliza `[Nombre del Doctor]` en el System Prompt del agente\n\n✅ **Para agendar una cita de prueba hoy:** activa el workflow y abre la URL del Chat Trigger.",
+        "height": 380,
+        "width": 500,
+        "color": 5
+      },
+      "id": "sticky-note-1",
+      "name": "📋 Instrucciones de configuración",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-300, -380]
+    },
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "¡Hola! Soy el asistente digital del Dr. [Nombre]. Estoy aquí para ayudarte a agendar citas y resolver tus dudas de salud generales.\n\nRecuerda que soy una inteligencia artificial y mis respuestas no sustituyen la consulta médica presencial. ¿En qué puedo ayudarte hoy?",
+        "options": {}
+      },
+      "id": "chat-trigger-1",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 0],
+      "webhookId": "asistente-medico-pro-trigger"
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-20241022",
+        "options": {
+          "maxTokensToSample": 1024
+        }
+      },
+      "id": "claude-model-1",
+      "name": "Claude 3.5 Sonnet",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [300, -180],
+      "credentials": {
+        "anthropicApi": {
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "agent": "conversationalAgent",
+        "options": {
+          "systemMessage": "Eres el asistente digital del Dr. [Nombre del Doctor], médico especialista de confianza.\n\nTu misión tiene dos partes principales:\n\n**1. AGENDAR CITAS**\nCuando un paciente quiera una cita, recoge estos datos paso a paso (uno a la vez, no todos a la vez):\n- Nombre completo del paciente\n- Motivo de la consulta (breve descripción)\n- Fecha preferida\n- Hora preferida (mañana o tarde)\n- Teléfono de contacto\n\nAl final, confirma los datos con un resumen claro y dile que el consultorio confirmará la cita por teléfono en las próximas horas.\n\n**2. RESPONDER DUDAS MÉDICAS GENERALES**\n- Proporciona información médica clara, empática y basada en evidencia actualizada.\n- Usa un lenguaje accesible, sin tecnicismos innecesarios.\n- SIEMPRE incluye al final de cada respuesta médica: \"⚕️ Recuerda: soy una IA y esta información no reemplaza la evaluación de un médico. Ante cualquier duda, agenda tu cita.\"\n- Nunca emitas diagnósticos definitivos ni prescribas medicamentos específicos.\n- En situaciones de emergencia (dolor en el pecho, dificultad respiratoria grave, pérdida de conciencia), indica SIEMPRE llamar al 112 o acudir a urgencias de inmediato.\n\n**TONO Y ESTILO**\n- Profesional, cálido y tranquilizador.\n- Saluda por el nombre del paciente si lo has recogido.\n- Muestra empatía genuina ante preocupaciones de salud.\n- Sé conciso pero completo.\n\n**LÍMITES CLAROS**\n- Deja claro en todo momento que eres una IA, no el doctor en persona.\n- No discutas temas no relacionados con salud o gestión de citas."
+        }
+      },
+      "id": "ai-agent-1",
+      "name": "AI Agent (Dr. Digital)",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [300, 0]
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 20
+      },
+      "id": "memory-1",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [300, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.elevenlabs.io/v1/text-to-speech/YOUR_VOICE_ID",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "YOUR_ELEVENLABS_API_KEY"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept",
+              "value": "audio/mpeg"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{ $json.output }}"
+            },
+            {
+              "name": "model_id",
+              "value": "eleven_multilingual_v2"
+            },
+            {
+              "name": "voice_settings",
+              "value": "={{ JSON.stringify({ stability: 0.55, similarity_boost: 0.80, style: 0.10, use_speaker_boost: true }) }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "http-voice-1",
+      "name": "HTTP Request (Voz ElevenLabs)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [600, 0]
+    }
+  ],
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent (Dr. Digital)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claude 3.5 Sonnet": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent (Dr. Digital)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent (Dr. Digital)",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent (Dr. Digital)": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request (Voz ElevenLabs)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}

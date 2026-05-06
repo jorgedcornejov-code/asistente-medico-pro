@@ -1,0 +1,5 @@
+# Credenciales y configuración local
+.mcp.json
+
+# macOS
+.DS_Store

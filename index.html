@@ -334,18 +334,17 @@
   <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
   <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
     createChat({
-      webhookUrl: 'https://autojdvc.app.n8n.cloud/webhook/asistente-medico-pro-trigger/chat',
-      webhookConfig: {
-        method: 'POST',
-        headers: {}
-      },
-      showWelcomeMessage: true,
-      title: 'Elena - Asistente del Dr. Barajas',
-      welcomeMessage: 'Hola, soy Elena. ¿En qué puedo ayudarle hoy de parte del Dr. Barajas?',
-      theme: {
-        buttonColor: '#1e40af',
-      }
+        webhookUrl: 'https://autojdvc.app.n8n.cloud/webhook/asistente-medico-pro-trigger/chat',
+        webhookConfig: {
+            method: 'POST'
+        },
+        showWelcomeScreen: true,
+        title: 'Elena - Asistente del Dr. Barajas',
+        welcomeMessage: '¡Hola! Soy Elena. ¿En qué puedo ayudarte hoy de parte del Dr. Barajas?',
+        chatButtonBackgroundColor: '#1e40af',
+        placeholder: 'Escribe tu mensaje aquí...',
     });
   </script>
 <!-- Forzando despliegue -->
